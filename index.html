@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hamza Zeeshan — AI Student & Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#050505;--surface:#0d0d0d;--surface2:#141414;
+  --border:rgba(255,255,255,0.07);--text:#ffffff;--muted:#71717a;--muted2:#3f3f46;
+  --lime:#00FF41;--lime-dim:rgba(0,255,65,0.08);--lime-glow:rgba(0,255,65,0.25);
+  --cyan:#06B6D4;--pink:#EC4899;--gradient:linear-gradient(135deg,#06B6D4,#EC4899);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.6;overflow-x:hidden;cursor:none}
+#cursor{position:fixed;width:8px;height:8px;background:var(--lime);border-radius:50%;pointer-events:none;z-index:9999;transition:transform 0.15s ease;mix-blend-mode:difference}
+#cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(0,255,65,0.4);border-radius:50%;pointer-events:none;z-index:9998;transition:transform 0.4s cubic-bezier(0.23,1,0.32,1)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.5rem 3rem;mix-blend-mode:difference}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:-0.02em;color:#fff;text-decoration:none}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.3s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:#fff;color:#000;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.5rem 1.25rem;border-radius:100px;text-decoration:none;font-weight:500;transition:transform 0.3s}
+.nav-cta:hover{transform:scale(1.05)}
+
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 3rem 5rem;position:relative;overflow:hidden}
+.hero-bg-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Syne',sans-serif;font-weight:900;font-size:clamp(80px,18vw,280px);color:#fff;opacity:0.02;white-space:nowrap;letter-spacing:-0.05em;pointer-events:none;user-select:none;will-change:transform}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--lime);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem}
+.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--lime)}
+.hero-name{font-family:'Syne',sans-serif;font-weight:900;font-size:clamp(52px,9vw,130px);line-height:0.92;letter-spacing:-0.04em;margin-bottom:0.25rem; white-space:pre-line;}
+.hero-name .gradient-text{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;margin-top:3rem;gap:2rem}
+.hero-desc{max-width:420px;font-size:1rem;color:rgba(255,255,255,0.5);line-height:1.7;font-weight:300}
+.hero-meta{text-align:right;flex-shrink:0}
+.hero-meta p{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--muted);letter-spacing:0.1em;line-height:2}
+.scroll-indicator{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center}
+.scroll-line{width:1px;height:60px;background:linear-gradient(to bottom,transparent,var(--lime));animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:0.3;transform:scaleY(0.8)}50%{opacity:1;transform:scaleY(1)}}
+
+.marquee-wrap{padding:1.5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
+.marquee-track{display:flex;animation:marquee 24s linear infinite;width:max-content}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-item{font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted2);padding:0 2.5rem;white-space:nowrap;display:flex;align-items:center;gap:2.5rem}
+.marquee-item span{width:4px;height:4px;border-radius:50%;background:var(--lime);flex-shrink:0}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+section{padding:7rem 3rem}
+.section-label{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--lime);letter-spacing:0.25em;text-transform:uppercase;margin-bottom:3rem;display:flex;align-items:center;gap:1rem}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.section-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(32px,5vw,64px);letter-spacing:-0.03em;line-height:1;margin-bottom:1rem}
+
+.filter-bar{display:flex;gap:0.5rem;flex-wrap:wrap}
+.filter-btn{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.35rem 0.9rem;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:none;transition:all 0.3s}
+.filter-btn:hover,.filter-btn.active{border-color:var(--lime);color:var(--lime);background:var(--lime-dim)}
+
+/* PROJECT CARDS - Fixed Edges & Images */
+.projects-grid{display:grid; gap:1.5rem;}
+.project-card{
+  background:var(--bg); display:grid; grid-template-columns:1fr 280px; align-items:stretch;
+  transition:background 0.4s, transform 0.3s; position:relative; cursor:none;
+  border-radius: 12px; /* Smooth rounded corners */
+  border: 1px solid rgba(255,255,255,0.05); /* Soft border frame */
+  overflow:hidden;
+}
+.project-card::before{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--lime);box-shadow:0 0 12px var(--lime-glow);transition:width 0.5s cubic-bezier(0.23,1,0.32,1);z-index:2}
+.project-card:hover{background:var(--surface); transform:translateY(-3px);}
+.project-card:hover::before{width:100%}
+.project-card.no-thumb{grid-template-columns:1fr auto}
+
+.project-body{padding:2.5rem 3rem;display:flex;flex-direction:column; z-index:2;}
+.project-num{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted2);letter-spacing:0.1em;margin-bottom:1.5rem}
+.project-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(20px,3vw,38px);letter-spacing:-0.03em;margin-bottom:0.75rem;line-height:1}
+.project-desc{color:rgba(255,255,255,0.45);font-size:0.9rem;max-width:520px;line-height:1.7;margin-bottom:1.5rem;flex:1}
+.project-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem}
+.tag{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.75rem;border:1px solid var(--border);color:var(--muted);border-radius:100px}
+.project-actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+
+.gh-wrapper{position:relative}
+.gh-btn{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--lime);background:transparent;border:1px solid rgba(0,255,65,0.25);padding:0.45rem 0.9rem;border-radius:4px;cursor:none;display:flex;align-items:center;gap:0.5rem;transition:background 0.3s,border-color 0.3s;}
+.gh-btn:hover{background:var(--lime-dim);border-color:var(--lime)}
+.gh-btn svg{width:14px;height:14px;fill:currentColor}
+.gh-chevron{font-size:0.6rem;transition:transform 0.2s}
+.gh-dropdown{position:absolute;bottom:calc(100% + 6px);left:0;background:var(--surface2);border:1px solid var(--border);border-radius:4px;min-width:180px;overflow:hidden;opacity:0;pointer-events:none;transform:translateY(4px);transition:opacity 0.2s,transform 0.2s;z-index:10;}
+.gh-dropdown.open{opacity:1;pointer-events:all;transform:translateY(0)}
+.gh-dropdown a{display:block;padding:0.6rem 1rem;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.08em;color:rgba(255,255,255,0.7);text-decoration:none;transition:background 0.2s,color 0.2s;}
+.gh-dropdown a:hover{background:var(--lime-dim);color:var(--lime)}
+
+.try-btn{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--lime);color:#000;border:none;padding:0.45rem 1rem;border-radius:4px;cursor:none;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:0.4rem;transition:opacity 0.3s;}
+.try-btn:hover{opacity:0.85}
+
+.project-status{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.35rem 0.85rem;border-radius:100px;white-space:nowrap; z-index:3; position:absolute; top:1.5rem; right:1.5rem;}
+.status-live{border:1px solid rgba(0,255,65,0.3);color:var(--lime);background:var(--lime-dim)}
+.status-wip{border:1px solid rgba(6,182,212,0.3);color:var(--cyan);background:rgba(6,182,212,0.05)}
+.status-exe{border:1px solid var(--border);color:var(--muted);background:rgba(255,255,255,0.02)}
+
+/* Thumbnails - Smooth Blending */
+.project-thumb{
+  position:relative; height:100%; min-height:200px;
+  /* Fades the left edge smoothly into the dark card background */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 25%);
+  mask-image: linear-gradient(to right, transparent 0%, black 25%);
+}
+.project-thumb img{
+  width:100%; height:100%; 
+  object-fit:cover; /* Forces image to fit container, not stretch */
+  object-position: center; 
+  filter:grayscale(30%); transition:filter 0.4s,transform 0.4s; display:block;
+}
+.project-card:hover .project-thumb img{filter:grayscale(0%);transform:scale(1.04)}
+
+/* Placeholder if image is missing */
+.thumb-placeholder{
+  width:100%; height:100%; min-height:200px;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.02) 0%, transparent 70%);
+}
+
+.skills-section{background:var(--surface)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--border);margin-top:4rem}
+.skill-group{background:var(--surface);padding:2rem 2.5rem}
+.skill-group-label{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--lime);margin-bottom:1.25rem}
+.skill-item{display:flex;align-items:center;justify-content:space-between;padding:0.6rem 0;border-bottom:1px solid var(--border)}
+.skill-item:last-child{border-bottom:none}
+.skill-name{font-size:0.88rem;color:rgba(255,255,255,0.8)}
+.skill-proj{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);letter-spacing:0.05em}
+
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-top:4rem}
+.edu-card{background:var(--bg);padding:2.5rem 3rem}
+.edu-year{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--lime);letter-spacing:0.15em;margin-bottom:1rem}
+.edu-degree{font-family:'Syne',sans-serif;font-weight:800;font-size:1.6rem;letter-spacing:-0.03em;margin-bottom:0.5rem}
+.edu-school{font-size:0.9rem;color:rgba(255,255,255,0.5);margin-bottom:1.5rem}
+.edu-cgpa{display:inline-flex;align-items:center;gap:0.5rem;background:var(--lime-dim);border:1px solid rgba(0,255,65,0.2);padding:0.4rem 1rem;border-radius:100px;font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--lime)}
+.courses{margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:0.4rem}
+.course-tag{font-size:0.72rem;color:var(--muted);border:1px solid var(--border);padding:0.25rem 0.6rem;border-radius:4px}
+
+.wip-grid{display:grid;gap:1rem;margin-top:4rem}
+.wip-card{display:flex;align-items:center;gap:2rem;padding:1.75rem 2.5rem;background:var(--surface);border:1px solid var(--border);border-radius:4px;transition:border-color 0.3s,background 0.3s}
+.wip-card:hover{border-color:rgba(0,255,65,0.2);background:var(--surface2)}
+.wip-pulse{width:8px;height:8px;border-radius:50%;background:var(--lime);flex-shrink:0;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,255,65,0.4)}70%{box-shadow:0 0 0 8px rgba(0,255,65,0)}100%{box-shadow:0 0 0 0 rgba(0,255,65,0)}}
+.wip-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:0.25rem}
+.wip-desc{font-size:0.85rem;color:rgba(255,255,255,0.4)}
+.wip-badge{margin-left:auto;flex-shrink:0;font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.3rem 0.75rem;border:1px solid rgba(6,182,212,0.3);color:var(--cyan);border-radius:100px;background:rgba(6,182,212,0.05)}
+
+.contact-section{border-top:1px solid var(--border)}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:4rem}
+.contact-title{font-family:'Syne',sans-serif;font-weight:900;font-size:clamp(40px,7vw,100px);letter-spacing:-0.04em;line-height:0.9}
+.contact-title .outline{-webkit-text-stroke:1px rgba(255,255,255,0.3);color:transparent}
+.contact-links{list-style:none;margin-bottom:2.5rem}
+.contact-links li{border-bottom:1px solid var(--border)}
+.contact-links a{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 0;text-decoration:none;color:rgba(255,255,255,0.5);font-size:0.85rem;letter-spacing:0.05em;transition:color 0.3s,padding-left 0.3s}
+.contact-links a:hover{color:var(--lime);padding-left:0.5rem}
+.contact-links a .arrow{transition:transform 0.3s}
+.contact-links a:hover .arrow{transform:translate(4px,-4px)}
+.contact-email{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;color:#fff;text-decoration:none;display:block;margin-bottom:0.5rem;transition:color 0.3s}
+.contact-email:hover{color:var(--lime)}
+
+footer{padding:1.5rem 3rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+footer p{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted2);letter-spacing:0.1em}
+
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.8s ease,transform 0.8s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){.project-card{grid-template-columns:1fr}.project-thumb{min-height:180px;max-height:220px; -webkit-mask-image:none; mask-image:none;}}
+@media(max-width:768px){nav{padding:1.25rem 1.5rem}.nav-links{display:none}section{padding:5rem 1.5rem}.hero{padding:0 1.5rem 4rem}.hero-bottom{flex-direction:column;align-items:flex-start}.hero-meta{text-align:left}.edu-grid,.contact-inner{grid-template-columns:1fr}footer{flex-direction:column;gap:1rem;text-align:center}.wip-card{flex-wrap:wrap}.project-body{padding:2rem 1.5rem}}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div><div id="cursor-ring"></div>
+
+<nav>
+  <a href="#" class="nav-logo" id="nav-logo">HZ</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Work</a></li><li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li><li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#" class="nav-cta" id="nav-cta" target="_blank">Contact me</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg-text" id="heroBg"></div>
+  <div class="hero-eyebrow" id="hero-badge"></div>
+  <div class="hero-name fade-up" id="hero-name"></div>
+  <div class="hero-bottom fade-up">
+    <p class="hero-desc" id="hero-bio"></p>
+    <div class="hero-meta" id="hero-meta-lines"></div>
+  </div>
+  <div class="scroll-indicator"><div class="scroll-line"></div></div>
+</section>
+
+<div class="marquee-wrap"><div class="marquee-track" id="marquee-track"></div></div>
+
+<section id="projects">
+  <div class="section-label">Selected Work</div>
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;margin-bottom:3rem">
+    <div class="section-title fade-up">Projects.</div>
+    <div class="filter-bar" id="filterBar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="web">Web</button>
+      <button class="filter-btn" data-filter="ai">AI / ML</button>
+      <button class="filter-btn" data-filter="game">Games</button>
+    </div>
+  </div>
+  <div class="projects-grid" id="projectsGrid"></div>
+</section>
+
+<section style="padding-top:0;padding-bottom:7rem;padding-left:3rem;padding-right:3rem">
+  <div class="section-label">In Progress</div>
+  <div class="section-title fade-up" style="margin-bottom:0">Currently<br>building.</div>
+  <div class="wip-grid" id="wipGrid"></div>
+</section>
+
+<section id="skills" class="skills-section">
+  <div class="section-label">Capabilities</div>
+  <div class="section-title fade-up">Skills linked<br>to real work.</div>
+  <div class="skills-grid" id="skillsGrid"></div>
+</section>
+
+<section id="education">
+  <div class="section-label">Background</div>
+  <div class="section-title fade-up">Education.</div>
+  <div class="edu-grid" id="eduGrid"></div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="contact-inner">
+    <div>
+      <div class="section-label">Get in touch</div>
+      <div class="contact-title fade-up">Let's<br>work<br><span class="outline">together.</span></div>
+    </div>
+    <div style="padding-bottom:0.5rem">
+      <ul class="contact-links">
+        <li><a id="link-email" href="" target="_blank">Email <span class="arrow">↗</span></a></li>
+        <li><a id="link-github" href="" target="_blank">GitHub <span class="arrow">↗</span></a></li>
+        <li><a id="link-linkedin" href="" target="_blank">LinkedIn <span class="arrow">↗</span></a></li>
+      </ul>
+      <a id="contact-email-large" href="" class="contact-email" target="_blank"></a>
+      <p id="contact-location" style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted2);letter-spacing:0.1em;margin-top:0.5rem"></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p id="footer-year"></p>
+  <p>BUILT WITH HTML — DEPLOYED ON VERCEL</p>
+</footer>
+
+<script>
+// ── CURSOR & ANIMATIONS
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=(mx-4)+'px';cur.style.top=(my-4)+'px'});
+(function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=(rx-16)+'px';ring.style.top=(ry-16)+'px';requestAnimationFrame(animRing)})();
+document.addEventListener('mouseover',e=>{
+  if(e.target.closest('a,button,.project-card,.filter-btn')){cur.style.transform='scale(2)';ring.style.transform='scale(1.5)'}
+  else{cur.style.transform='scale(1)';ring.style.transform='scale(1)'}
+});
+
+const heroBg=document.getElementById('heroBg');
+window.addEventListener('scroll',()=>{
+  const s=window.scrollY; heroBg.style.transform=`translate(-50%,calc(-50% + ${s*0.3}px))`; heroBg.style.opacity=Math.max(0,0.02-s*0.00005);
+});
+
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+},{threshold:0.1});
+
+// ── FILTER
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active');
+    const f=btn.dataset.filter;
+    document.querySelectorAll('.project-card').forEach(c=>c.style.display=(f==='all'||c.dataset.category===f)?'grid':'none');
+  });
+});
+
+function toggleDropdown(id){
+  const d=document.getElementById(id);
+  if(!d)return;
+  const isOpen=d.classList.contains('open');
+  document.querySelectorAll('.gh-dropdown').forEach(x=>x.classList.remove('open'));
+  if(!isOpen)d.classList.add('open');
+}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.gh-wrapper')) document.querySelectorAll('.gh-dropdown').forEach(x=>x.classList.remove('open'));
+});
+
+// ── DYNAMIC DATA LOADER
+async function loadSiteData(){
+  try{
+    const res=await fetch('data.json');
+    if(!res.ok)throw new Error('fetch failed');
+    const data=await res.json();
+    
+    // 1. META
+    const m = data.meta || {};
+    document.getElementById('nav-logo').innerText = m.initials || 'HZ';
+    
+    const mailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${m.email}`;
+    document.getElementById('nav-cta').href = mailUrl;
+    
+    document.getElementById('heroBg').innerText = (m.name||'').replace(/\n/g, '').toUpperCase();
+    document.getElementById('hero-badge').innerText = m.availability_badge || '';
+    
+    // Split name for gradient styling
+    const nameParts = (m.name || '').split('\n');
+    let nameHtml = '';
+    if(nameParts.length > 1) {
+        nameHtml = `${nameParts[0]}<br><span class="gradient-text">${nameParts[1]}</span>`;
+    } else {
+        nameHtml = m.name;
+    }
+    document.getElementById('hero-name').innerHTML = nameHtml;
+    document.getElementById('hero-bio').innerText = m.hero_bio || '';
+    
+    document.getElementById('hero-meta-lines').innerHTML = (m.hero_meta||[]).map(line => `<p>${line}</p>`).join('');
+    
+    document.getElementById('link-email').href = mailUrl;
+    document.getElementById('link-github').href = m.github_url || '#';
+    document.getElementById('link-linkedin').href = m.linkedin_url || '#';
+    
+    const cEmail = document.getElementById('contact-email-large');
+    cEmail.innerText = m.email || '';
+    cEmail.href = mailUrl;
+    document.getElementById('contact-location').innerText = m.location || '';
+    document.getElementById('footer-year').innerText = `© ${new Date().getFullYear()} ${(m.name||'').replace(/\n/g, ' ').toUpperCase()}`;
+
+    // 2. MARQUEE
+    const marqueeHtml = (data.marquee||[]).map(item => `<div class="marquee-item">${item} <span></span></div>`).join('');
+    document.getElementById('marquee-track').innerHTML = marqueeHtml + marqueeHtml;
+
+    // 3. PROJECTS
+    const pGrid = document.getElementById('projectsGrid');
+    pGrid.innerHTML = '';
+    (data.projects||[]).forEach((p,i)=>{
+      const num = String(i+1).padStart(2,'0');
+      const tagsHtml = (p.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('');
+      const ghLinks = p.github_links||[];
+      let ghHtml='';
+      if(ghLinks.length===1) ghHtml=`<a href="${ghLinks[0].url}" target="_blank" class="gh-btn"><svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.1.82-.26.82-.58v-2.04c-3.34.72-4.04-1.6-4.04-1.6-.54-1.38-1.33-1.74-1.33-1.74-1.08-.74.08-.72.08-.72 1.2.08 1.83 1.22 1.83 1.22 1.06 1.82 2.78 1.3 3.46 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.3.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02.004 2.04.14 3 .4 2.28-1.55 3.28-1.23 3.28-1.23.66 1.66.24 2.88.12 3.18.78.84 1.24 1.92 1.24 3.22 0 4.6-2.8 5.62-5.48 5.92.42.36.82 1.1.82 2.22v3.3c0 .32.22.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg> GitHub →</a>`;
+      else if(ghLinks.length>1){
+        const dropId = `gh-drop-${p.id}`;
+        ghHtml=`<div class="gh-wrapper"><button class="gh-btn" onclick="toggleDropdown('${dropId}')"><svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.1.82-.26.82-.58v-2.04c-3.34.72-4.04-1.6-4.04-1.6-.54-1.38-1.33-1.74-1.33-1.74-1.08-.74.08-.72.08-.72 1.2.08 1.83 1.22 1.83 1.22 1.06 1.82 2.78 1.3 3.46 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.3.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02.004 2.04.14 3 .4 2.28-1.55 3.28-1.23 3.28-1.23.66 1.66.24 2.88.12 3.18.78.84 1.24 1.92 1.24 3.22 0 4.6-2.8 5.62-5.48 5.92.42.36.82 1.1.82 2.22v3.3c0 .32.22.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg> GitHub <span class="gh-chevron">▲</span></button><div class="gh-dropdown" id="${dropId}">${ghLinks.map(l=>`<a href="${l.url}" target="_blank">${l.label}</a>`).join('')}</div></div>`;
+      }
+      
+      const tryHtml = p.try_url ? `<a href="${p.try_url}" target="_blank" class="try-btn">Try it →</a>` : '';
+      const badgeClass = p.status==='live' ? 'status-live' : p.status==='wip' ? 'status-wip' : 'status-exe';
+      
+      let thumbHtml;
+      if (p.thumbnail && p.thumbnail.trim() !== '') {
+          // If image fails to load, gracefully replace it with the placeholder div using onerror
+          thumbHtml = `<div class="project-thumb">
+                        <img src="${p.thumbnail}" alt="${p.title}" loading="lazy" onerror="this.outerHTML='<div class=\\'thumb-placeholder\\'></div>'">
+                       </div>`;
+      } else {
+          thumbHtml = `<div class="project-thumb"><div class="thumb-placeholder"></div></div>`;
+      }
+
+      const card=document.createElement('div'); card.className='project-card fade-up'; card.dataset.category=p.category||'web';
+      card.innerHTML=`
+        <div class="project-body">
+            <div class="project-num">${num}</div>
+            <div class="project-title">${p.title}</div>
+            <p class="project-desc">${p.description}</p>
+            <div class="project-tags">${tagsHtml}</div>
+            <div class="project-actions">${ghHtml}${tryHtml}</div>
+        </div>
+        <span class="project-status ${badgeClass}">${p.status_label||p.status}</span>
+        ${thumbHtml}`;
+      pGrid.appendChild(card);
+    });
+
+    // 4. WIP
+    const wGrid = document.getElementById('wipGrid');
+    wGrid.innerHTML = (data.wip||[]).map(w => `<div class="wip-card fade-up"><div class="wip-pulse"></div><div><div class="wip-title">${w.title}</div><p class="wip-desc">${w.description}</p></div><div class="wip-badge">In Progress</div></div>`).join('');
+
+    // 5. SKILLS
+    const sGrid = document.getElementById('skillsGrid');
+    sGrid.innerHTML = (data.skills||[]).map(g => `<div class="skill-group fade-up"><div class="skill-group-label">${g.group}</div>${(g.items||[]).map(i => `<div class="skill-item"><span class="skill-name">${i.name}</span><span class="skill-proj">${i.used_in}</span></div>`).join('')}</div>`).join('');
+
+    // 6. EDUCATION
+    const eGrid = document.getElementById('eduGrid');
+    eGrid.innerHTML = (data.education||[]).map(e => {
+        const cgpaHtml = e.cgpa ? `<div class="edu-cgpa">${e.cgpa}</div>` : '';
+        const coursesHtml = (e.courses||[]).length ? `<div class="courses">${e.courses.map(c=>`<span class="course-tag">${c}</span>`).join('')}</div>` : '';
+        return `<div class="edu-card fade-up"><div class="edu-year">${e.year}</div><div class="edu-degree">${e.degree}</div><div class="edu-school">${e.school}</div>${cgpaHtml}${coursesHtml}</div>`;
+    }).join('');
+
+    // Re-init observer for new DOM elements
+    document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+
+  } catch(err){
+    document.body.innerHTML=`<div style="padding:3rem;text-align:center;color:#ef4444;font-family:'DM Mono',monospace;font-size:1rem;margin-top:20vh">Could not load data.json.<br>Are you running a local server? (python -m http.server 8000)</div>`;
+    console.error(err);
+  }
+}
+
+loadSiteData();
+</script>
+</body>
+</html>

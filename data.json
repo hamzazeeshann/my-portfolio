@@ -1,0 +1,303 @@
+{
+  "meta": {
+    "name": "Hamza\nZeeshan.",
+    "initials": "HZ",
+    "availability_badge": "Available for internships — Summer 2025",
+    "hero_bio": "AI student at ITU Lahore learning and building across computer science and AI — games, full-stack apps, computer vision tools, and intelligent systems.",
+    "location": "LAHORE, PAKISTAN — OPEN TO REMOTE",
+    "email": "hamzazeeshann@gmail.com",
+    "github_url": "https://github.com/hamzazeeshann",
+    "linkedin_url": "https://www.linkedin.com/in/hamza-zeeshan/",
+    "hero_meta": [
+      "BS Artificial Intelligence",
+      "ITU Lahore — CGPA 3.49",
+      "4th Semester"
+    ]
+  },
+  "marquee": [
+    "C++",
+    "Python",
+    "Full Stack Development",
+    "NumPy, pandas",
+    "Web Development",
+    "App Development",
+    "Databases",
+    "Computer Vision",
+    "Machine Learning",
+    "Game Development"
+  ],
+  "projects": [
+    {
+      "id": "cinelog",
+      "title": "Cinelog",
+      "description": "A full-stack Letterboxd-style film tracking platform. Built custom data structures from scratch for all data storage and retrieval — users can log films, write reviews, and manage watchlists entirely on hand-built internals.",
+      "tags": [
+        "C++",
+        "Custom Data Structures",
+        "Full Stack",
+        "AWS"
+      ],
+      "category": "web",
+      "status": "exe",
+      "status_label": "",
+      "thumbnail": "assets/Movie Page.png",
+      "github_links": [
+        {
+          "label": "Main Repo",
+          "url": "https://github.com/hamzazeeshann/Cinelog-Linux.git"
+        }
+      ],
+      "try_url": ""
+    },
+    {
+      "id": "mini-google-lens",
+      "title": "Mini Google Lens",
+      "description": "A desktop computer vision app that detects objects in a webcam feed, translates extracted text, scans QR codes and barcodes, detects and opens links, and automatically searches Google for the identified subject.",
+      "tags": [
+        "Python",
+        "YOLOv8",
+        "Computer Vision",
+        "Tkinter"
+      ],
+      "category": "ai",
+      "status": "exe",
+      "status_label": "Desktop App",
+      "thumbnail": "assets/Screenshot 2026-05-09 012937.png",
+      "github_links": [
+        {
+          "label": "Main Repo",
+          "url": "https://github.com/hamzazeeshann/MiniGoogleLens.git"
+        }
+      ],
+      "try_url": ""
+    },
+    {
+      "id": "chess-oop-raylib",
+      "title": "Chess (OOP, Raylib)",
+      "description": "A full graphical chess engine in C++ with Raylib, designed with OOP principles. Features legal move validation, check and checkmate detection, and a UI inspired by chess.com.",
+      "tags": [
+        "C++",
+        "Raylib",
+        "OOP"
+      ],
+      "category": "game",
+      "status": "live",
+      "status_label": "Playable .exe",
+      "thumbnail": "assets/Screenshot 2026-05-09 160316.png",
+      "github_links": [
+        {
+          "label": "Main Repo",
+          "url": "https://github.com/hamzazeeshann/Chess-OOP-Based-raylib.git"
+        }
+      ],
+      "try_url": "https://hamzazeeshann.github.io/Chess-OOP-Based-raylib/"
+    },
+    {
+      "id": "metal-slug-clone",
+      "title": "Metal Slug Clone",
+      "description": "A side-scrolling action game inspired by Metal Slug, built from scratch in Raylib with a personal artistic touch. Custom movement mechanics, combat, and sprite rendering throughout.",
+      "tags": [
+        "C++",
+        "Raylib",
+        "Game Dev",
+        "OOP"
+      ],
+      "category": "game",
+      "status": "live",
+      "status_label": "Playable .exe",
+      "thumbnail": "assets/Screenshot 2026-05-10 143014.png",
+      "github_links": [
+        {
+          "label": "Main Repo",
+          "url": "https://github.com/hamzazeeshann/metal-slug.git"
+        }
+      ],
+      "try_url": "https://hamzazeeshann.github.io/metal-slug/"
+    },
+    {
+      "id": "terminal-games-suite",
+      "title": "Terminal Games Suite",
+      "description": "Chess, Gomoku, and Nokia Snake each independently implemented in C++ for the Windows terminal — an exercise in game state management, AI opponent logic, and collision detection built purely from first principles.",
+      "tags": [
+        "C++",
+        "Terminal",
+        "Algorithms"
+      ],
+      "category": "game",
+      "status": "exe",
+      "status_label": "Windows",
+      "thumbnail": "assets/Screenshot 2026-01-14 234003.png",
+      "github_links": [
+        {
+          "label": "CHESS Repo",
+          "url": "https://github.com/hamzazeeshann/Console-Based-Basic-Chess.git"
+        },
+        {
+          "label": "Gomoku Repo",
+          "url": "https://github.com/hamzazeeshann/Gomoku.git"
+        },
+        {
+          "label": "Nokia Snake Game Repo",
+          "url": "https://github.com/hamzazeeshann/snake-game.git"
+        }
+      ],
+      "try_url": ""
+    },
+    {
+      "id": "weather-app",
+      "title": "Weather App",
+      "description": "Cross-platform Flutter weather app with live REST API data. Contributed custom hand-drawn UI themes integrated into the app's design system as part of a team project.",
+      "tags": [
+        "Flutter",
+        "Dart",
+        "UI Design",
+        "REST API"
+      ],
+      "category": "web",
+      "status": "exe",
+      "status_label": "Team Project",
+      "thumbnail": "assets/WhatsApp Image 2026-05-10 at 14.36.45.jpeg",
+      "github_links": [
+        {
+          "label": "Main Repo",
+          "url": "https://github.com/hamzazeeshann/hawahawa.git"
+        }
+      ],
+      "try_url": ""
+    }
+  ],
+  "wip": [
+    {
+      "title": "AI Handwriting Generator",
+      "description": "Trains a generative model on personal handwriting samples to reproduce letter style with natural noise and variation producing genuinely handwritten output rather than a clean font. We are using CNN to train our model on the parametric curves of each letter to generate authentic handwriting."
+    },
+    {
+      "title": "Film Suggestion Engine",
+      "description": "NLP-powered recommender using Hugging Face models with persistent user taste memory that learns preferences over time and surfaces films matched to individual viewing history."
+    },
+    {
+      "title": "Local Lens",
+      "description": "Community-driven local business rating and discovery platform built for Pakistan's local context."
+    }
+  ],
+  "skills": [
+    {
+      "group": "Languages",
+      "items": [
+        {
+          "name": "C++",
+          "used_in": "Chess, Cinelog, Metal Slug"
+        },
+        {
+          "name": "Python",
+          "used_in": "Google Lens, Recommenders"
+        },
+        {
+          "name": "Dart / Flutter",
+          "used_in": "Weather App"
+        },
+        {
+          "name": "SQL",
+          "used_in": "Database Systems coursework"
+        }
+      ]
+    },
+    {
+      "group": "AI / ML",
+      "items": [
+        {
+          "name": "Computer Vision",
+          "used_in": "Mini Google Lens (Basics)"
+        },
+        {
+          "name": "Hugging Face",
+          "used_in": "Recommender, Film Engine"
+        },
+        {
+          "name": "Machine Learning",
+          "used_in": "AI coursework (Beginner)"
+        },
+        {
+          "name": "NumPy",
+          "used_in": "AI coursework (Beginner)"
+        },
+        {
+          "name": "Pandas",
+          "used_in": "AI coursework (Beginner)"
+        }
+      ]
+    },
+    {
+      "group": "Development",
+      "items": [
+        {
+          "name": "Full Stack",
+          "used_in": "Cinelog"
+        },
+        {
+          "name": "App Development",
+          "used_in": "Weather App"
+        },
+        {
+          "name": "Game Development",
+          "used_in": "Chess, Metal Slug, Games Suite"
+        },
+        {
+          "name": "Raylib",
+          "used_in": "Chess, Metal Slug"
+        }
+      ]
+    },
+    {
+      "group": "Data & Systems",
+      "items": [
+        {
+          "name": "Data Structures",
+          "used_in": "Cinelog (custom built)"
+        },
+        {
+          "name": "MongoDB / Redis",
+          "used_in": "Advanced DBMS"
+        },
+        {
+          "name": "MySQL",
+          "used_in": "Database Systems"
+        },
+        {
+          "name": "Git / GitHub",
+          "used_in": "All projects"
+        },
+        {
+          "name": "OOP",
+          "used_in": "Metal Slug, Chess"
+        }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "BS Artificial Intelligence",
+      "school": "Information Technology University (ITU), Lahore",
+      "year": "2024 — Present",
+      "cgpa": "CGPA 3.49 / 4.00",
+      "courses": [
+        "Artificial Intelligence",
+        "OOP",
+        "Data Structures",
+        "Database Systems",
+        "Computer Networks",
+        "Algorithms",
+        "Probability & Stats",
+        "Linear Algebra",
+        "Mobile Application Dev"
+      ]
+    },
+    {
+      "degree": "FSc Pre-Engineering",
+      "school": "Government College University (GCU), Lahore",
+      "year": "2022 — 2024",
+      "cgpa": "",
+      "courses": []
+    }
+  ]
+}
