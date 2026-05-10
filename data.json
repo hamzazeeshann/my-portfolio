@@ -55,9 +55,8 @@
       "description": "A desktop computer vision app that detects objects in a webcam feed, translates extracted text, scans QR codes and barcodes, detects and opens links, and automatically searches Google for the identified subject.",
       "tags": [
         "Python",
-        "YOLOv8",
-        "Computer Vision",
-        "Tkinter"
+        "App Dev",
+        "Basics of Computer Vision"
       ],
       "category": "ai",
       "status": "exe",
@@ -117,7 +116,7 @@
     {
       "id": "terminal-games-suite",
       "title": "Terminal Games Suite",
-      "description": "Chess, Gomoku, and Nokia Snake each independently implemented in C++ for the Windows terminal — an exercise in game state management, AI opponent logic, and collision detection built purely from first principles.",
+      "description": "Chess, Gomoku, and Nokia Snake each independently implemented in C++ for the Windows terminal, an exercise in game state management, AI opponent logic, and collision detection built purely from first principles. I did these projects in my first semester to build my programming skills.",
       "tags": [
         "C++",
         "Terminal",
@@ -146,7 +145,7 @@
     {
       "id": "weather-app",
       "title": "Weather App",
-      "description": "Cross-platform Flutter weather app with live REST API data. Contributed custom hand-drawn UI themes integrated into the app's design system as part of a team project.",
+      "description": "Cross platform Flutter weather app with live REST API data. Contributed custom hand-drawn UI themes integrated into the app's design system as part of a team project.",
       "tags": [
         "Flutter",
         "Dart",
