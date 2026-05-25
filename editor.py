@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
-import json, os, shutil
+import json, os, shutil, subprocess
 
 # ── PATH SETUP ────────────────────────────────────────────────────────────────
 ROOT      = os.path.dirname(os.path.abspath(__file__))
@@ -37,6 +37,15 @@ def load_site():
 def save_site(data):
     with open(SITE_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
+
+def run_git(args, cwd):
+    return subprocess.run(
+        ["git", *args],
+        cwd=cwd,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
 
 def copy_asset(src):
     os.makedirs(ASSETS, exist_ok=True)
@@ -353,7 +362,31 @@ class App:
     def save_all(self):
         self.flush_all()
         save_site(self.data)
-        messagebox.showinfo("Success", "All changes have been saved!\n\nRefresh your local browser to see them, or commit and push to update your live Vercel site.")
+        status = run_git(["status", "--porcelain", "data.json", "assets"], ROOT)
+        if status.returncode != 0:
+            messagebox.showerror("Git Error", f"Saved, but git status failed:\n{status.stderr.strip() or status.stdout.strip()}")
+            return
+
+        if not status.stdout.strip():
+            messagebox.showinfo("Success", "All changes have been saved!\n\nNo changes to commit.")
+            return
+
+        add = run_git(["add", "data.json", "assets"], ROOT)
+        if add.returncode != 0:
+            messagebox.showerror("Git Error", f"Saved, but git add failed:\n{add.stderr.strip() or add.stdout.strip()}")
+            return
+
+        commit = run_git(["commit", "-m", "Update portfolio"], ROOT)
+        if commit.returncode != 0 and "nothing to commit" not in (commit.stdout + commit.stderr):
+            messagebox.showerror("Git Error", f"Saved, but git commit failed:\n{commit.stderr.strip() or commit.stdout.strip()}")
+            return
+
+        push = run_git(["push"], ROOT)
+        if push.returncode != 0:
+            messagebox.showerror("Git Error", f"Saved, but git push failed:\n{push.stderr.strip() or push.stdout.strip()}")
+            return
+
+        messagebox.showinfo("Success", "All changes have been saved and pushed!\n\nVercel will update after the deploy finishes.")
 
 if __name__ == "__main__":
     root = tk.Tk(); App(root); root.mainloop()
