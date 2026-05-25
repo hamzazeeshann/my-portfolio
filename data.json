@@ -3,7 +3,7 @@
     "name": "Hamza\nZeeshan.",
     "initials": "HZ",
     "availability_badge": "Available for internships — Summer 2026",
-    "hero_bio": "AI student at ITU Lahore learning and building across computer science and AI — games, full-stack apps, computer vision tools, and intelligent systems.",
+    "hero_bio": "AI student at ITU Lahore learning and building across computer science and AI — full-stack apps, games and intelligent systems.",
     "location": "LAHORE, PAKISTAN — OPEN TO REMOTE",
     "email": "hamzazeeshann@gmail.com",
     "github_url": "https://github.com/hamzazeeshann",
@@ -17,13 +17,13 @@
   "marquee": [
     "C++",
     "Python",
+    "AI",
     "Full Stack Development",
-    "NumPy, pandas",
     "Web Development",
     "App Development",
     "Databases",
-    "Computer Vision",
-    "Machine Learning",
+    "CNN",
+    "Regression Models",
     "Game Development"
   ],
   "projects": [
@@ -205,24 +205,28 @@
       "group": "AI / ML",
       "items": [
         {
-          "name": "Computer Vision",
-          "used_in": "Mini Google Lens (Basics)"
-        },
-        {
           "name": "Hugging Face",
           "used_in": "Recommender, Film Engine"
         },
         {
           "name": "Machine Learning",
-          "used_in": "AI coursework (Beginner)"
+          "used_in": "AI coursework"
         },
         {
           "name": "NumPy",
-          "used_in": "AI coursework (Beginner)"
+          "used_in": "AI coursework"
         },
         {
           "name": "Pandas",
-          "used_in": "AI coursework (Beginner)"
+          "used_in": "AI coursework"
+        },
+        {
+          "name": "CNN",
+          "used_in": "AI Handwriting Generator"
+        },
+        {
+          "name": "Linear & Logistic Regression",
+          "used_in": "AI coursework"
         }
       ]
     },
