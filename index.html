@@ -24,8 +24,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-links{display:flex;gap:2.5rem;list-style:none}
 .nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.3s}
 .nav-links a:hover{color:#fff}
+.nav-actions{display:flex;align-items:center;gap:0.75rem}
 .nav-cta{background:#fff;color:#000;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.5rem 1.25rem;border-radius:100px;text-decoration:none;font-weight:500;transition:transform 0.3s}
 .nav-cta:hover{transform:scale(1.05)}
+.nav-resume{color:#fff;background:transparent;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.5rem 1.15rem;border-radius:100px;text-decoration:none;font-weight:500;border:1px solid rgba(255,255,255,0.55);transition:transform 0.3s,border-color 0.3s,color 0.3s}
+.nav-resume:hover{transform:scale(1.05);border-color:#fff}
 
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 3rem 5rem;position:relative;overflow:hidden}
 .hero-bg-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Syne',sans-serif;font-weight:900;font-size:clamp(80px,18vw,280px);color:#fff;opacity:0.02;white-space:nowrap;letter-spacing:-0.05em;pointer-events:none;user-select:none;will-change:transform}
@@ -178,7 +181,10 @@ footer p{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted2);l
     <li><a href="#projects">Work</a></li><li><a href="#skills">Skills</a></li>
     <li><a href="#education">Education</a></li><li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#" class="nav-cta" id="nav-cta" target="_blank">Contact me</a>
+  <div class="nav-actions">
+    <a href="#" class="nav-resume" id="nav-resume" download>Download resume</a>
+    <a href="#" class="nav-cta" id="nav-cta" target="_blank">Contact me</a>
+  </div>
 </nav>
 
 <section class="hero">
@@ -301,7 +307,9 @@ async function loadSiteData(){
     document.getElementById('nav-logo').innerText = m.initials || 'HZ';
     
     const mailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${m.email}`;
+    const resumeUrl = m.resume_url || 'Hamza_Resume.pdf';
     document.getElementById('nav-cta').href = mailUrl;
+    document.getElementById('nav-resume').href = resumeUrl;
     
     document.getElementById('heroBg').innerText = (m.name||'').replace(/\n/g, '').toUpperCase();
     document.getElementById('hero-badge').innerText = m.availability_badge || '';
